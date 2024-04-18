@@ -14,7 +14,7 @@ with st.spinner('Querying Database...'):
         ssh_username='ubuntu',
         ssh_pkey=pkey,
         remote_bind_address=(st.secrets['db_ip'], 5432),
-        local_bind_address=('localhost',6543)
+        local_bind_address=('localhost',6544)
     )
     tunnel.start()
     conn = psycopg2.connect(
