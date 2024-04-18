@@ -4,6 +4,7 @@ import paramiko
 from sshtunnel import SSHTunnelForwarder
 import pandas as pd
 from datetime import date
+import random
 
 today = date.today()
 
@@ -14,7 +15,7 @@ with st.spinner('Querying Database...'):
         ssh_username='ubuntu',
         ssh_pkey=pkey,
         remote_bind_address=(st.secrets['db_ip'], 5432),
-        local_bind_address=('localhost',6544)
+        local_bind_address=('localhost',random.randint(6000, 6500))
     )
     tunnel.start()
     conn = psycopg2.connect(
